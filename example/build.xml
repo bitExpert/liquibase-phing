@@ -21,6 +21,16 @@
 		classpath="./../"
 		classname="liquibase.DiffTask" />
 
+	<taskdef
+		name="tag"
+		classpath="./../"
+		classname="liquibase.TagTask" />
+
+	<taskdef
+		name="rollback"
+		classpath="./../"
+		classname="liquibase.RollbackTask" />
+
 	<target name="init">
 		<property
 			file="./build.properties" />
@@ -81,5 +91,41 @@
 			referenceUsername="${referenceUsername}"
 			referencePassword="${referencePassword}"
 			referenceUrl="${referenceUrl}" />
+	</target>
+
+	<target name="tag"
+		description="Creates a new database tag"
+		depends="init">
+
+		<input
+			propertyname="tag"
+			defaultValue="test">Name of tag to create</input>
+
+		<tag
+			tag="${tag}"
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}" />
+	</target>
+
+	<target name="rollback"
+		description="Rollbacks database changes"
+		depends="init">
+
+		<input
+			propertyname="tag"
+			defaultValue="test">Name of tag to rollback to</input>
+
+		<rollback
+			rollbackTag="${tag}"
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}" />
 	</target>
 </project>
