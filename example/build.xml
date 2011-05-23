@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project name="Liquibase-phing" default="help" basedir=".">
+
+	<taskdef
+		name="update"
+		classpath="./../"
+		classname="liquibase.UpdateTask" />
+
+	<taskdef
+		name="changeLog"
+		classpath="./../"
+		classname="liquibase.ChangeLogTask" />
+
+	<taskdef
+		name="dbdoc"
+		classpath="./../"
+		classname="liquibase.DbDocTask" />
+
+	<taskdef
+		name="diff"
+		classpath="./../"
+		classname="liquibase.DiffTask" />
+
+	<target name="init">
+		<property
+			file="./build.properties" />
+	</target>
+
+	<target name="help"
+		description="Help target"
+		depends="init">
+	</target>
+
+	<target name="update"
+		description="Update database"
+		depends="init">
+		<update
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}" />
+	</target>
+
+	<target name="changelog"
+		description="Create changelog file"
+		depends="init">
+		<changeLog
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}" />
+	</target>
+
+	<target name="dbdoc"
+		description="Generate dbdoc files"
+		depends="init">
+		<dbdoc
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}"
+			outputDir="${outputDir}" />
+	</target>
+
+	<target name="diff"
+		description="Create diff file"
+		depends="init">
+		<diff
+			jar="${jar}"
+			classpathref="${classpathref}"
+			changelogFile="${changelogFile}"
+			username="${username}"
+			password="${password}"
+			url="${url}"
+			referenceUsername="${referenceUsername}"
+			referencePassword="${referencePassword}"
+			referenceUrl="${referenceUrl}" />
+	</target>
+</project>
