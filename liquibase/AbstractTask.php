@@ -175,8 +175,6 @@ abstract class AbstractTask extends Task
 			$lbparams
 		);
 
-		echo $command."\n";
-
 		passthru($command);
 
 		return;
