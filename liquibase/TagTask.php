@@ -35,7 +35,7 @@ class TagTask extends AbstractTask
 	 * Sets the name of tag which is used to mark the database state for
 	 * possible future rollback.
 	 *
-	 * @param string the output directory
+	 * @param string the name to tag the database with
 	 */
 	public function setTag($tag)
 	{
@@ -63,7 +63,7 @@ class TagTask extends AbstractTask
 
 
 	/**
-	 * @see Task::main
+	 * @see Task::main()
 	 */
 	public function main()
 	{

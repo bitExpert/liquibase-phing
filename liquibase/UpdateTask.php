@@ -27,7 +27,7 @@ require_once dirname(__FILE__).'/AbstractTask.php';
 class UpdateTask extends AbstractTask
 {
 	/**
-	 * @see Task::main
+	 * @see Task::main()
 	 */
 	public function main()
 	{

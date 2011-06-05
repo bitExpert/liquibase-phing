@@ -32,7 +32,7 @@ class RollbackTask extends AbstractTask
 	/**
 	 * Sets the name of the tag to roll back to.
 	 *
-	 * @param string the output directory
+	 * @param string the name to roll back to
 	 */
 	public function setRollbackTag($rollbackTag)
 	{
@@ -60,7 +60,7 @@ class RollbackTask extends AbstractTask
 
 
 	/**
-	 * @see Task::main
+	 * @see Task::main()
 	 */
 	public function main()
 	{

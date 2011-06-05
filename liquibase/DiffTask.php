@@ -93,7 +93,7 @@ class DiffTask extends AbstractTask
 
 
 	/**
-	 * @see Task::main
+	 * @see Task::main()
 	 */
 	public function main()
 	{
@@ -108,6 +108,7 @@ class DiffTask extends AbstractTask
 
 		// save main changelog file
 		$changelogFile = $this->changeLogFile;
+
 		// set the name of the new generated changelog file
 		$this->setChangeLogFile(dirname($changelogFile).'/diffs/'.date('YmdHis').'.xml');
 		if(!is_dir(dirname($changelogFile).'/diffs/'))
@@ -123,7 +124,7 @@ class DiffTask extends AbstractTask
 		$rootNode    = $xmlFile->getElementsByTagName('databaseChangeLog')->item(0);
 		$includeNode = $rootNode->appendChild($xmlFile->createElement('include'));
 
-//		// set the attributes for the new node
+		// set the attributes for the new node
 		$includeNode->setAttribute('file', str_replace(dirname($changelogFile).'/', '', $this->changeLogFile));
 		$includeNode->setAttribute('relativeToChangelogFile', 'true');
 		file_put_contents($changelogFile, $xmlFile->saveXML());

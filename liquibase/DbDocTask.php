@@ -74,7 +74,7 @@ class DbDocTask extends AbstractTask
 
 
 	/**
-	 * @see Task::main
+	 * @see Task::main()
 	 */
 	public function main()
 	{
